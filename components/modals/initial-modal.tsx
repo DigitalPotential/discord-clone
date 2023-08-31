@@ -82,7 +82,7 @@ export const InitialModal = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        Upload Thingy
+                        <FileUpload />
                       </FormControl>
                     </FormItem>
                   )}
