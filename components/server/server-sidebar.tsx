@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
+import { ServerHeader } from "@/components/server/server-header";
 
 interface ServerSidebarProps {
   serverId: string;
