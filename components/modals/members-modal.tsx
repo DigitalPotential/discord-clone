@@ -11,7 +11,7 @@ import { useModal } from "@/hooks/use-modal-store";
 import { ServerWithMembersWithProfiles } from "@/types";
 import { ScrollArea } from "../ui/scroll-area";
 import { UserAvatar } from "../user-avatar";
-import { Check, MoreVertical, Shield, ShieldAlert, ShieldCheck, ShieldQuestion } from "lucide-react";
+import { Check, Gavel, Loader2, MoreVertical, Shield, ShieldAlert, ShieldCheck, ShieldQuestion } from "lucide-react";
 import { useState } from "react";
 
 import {
@@ -98,9 +98,17 @@ export const MembersModal = () => {
                           </DropdownMenuSubContent>
                         </DropdownMenuPortal>
                       </DropdownMenuSub>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>
+                        <Gavel className="h-4 w-4 mr-2" />
+                        Kick
+                      </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
+              )}
+              {loadingId === member.id && (
+                <Loader2 className="animate-spin text-zinc-500 ml-auto w-4 h-4" />
               )}
             </div>
           ))}
