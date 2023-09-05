@@ -78,8 +78,8 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
       <ServerHeader server={server} role={role} />
       <ScrollArea className="flex-1 px-3">
         <div className="mt-2">
-          <ServerSearch
-             data={[
+        <ServerSearch
+            data={[
               {
                 label: "Text Channels",
                 type: "channel",
@@ -87,6 +87,33 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
                   id: channel.id,
                   name: channel.name,
                   icon: iconMap[channel.type],
+                }))
+              },
+              {
+                label: "Voice Channels",
+                type: "channel",
+                data: audioChannels?.map((channel) => ({
+                  id: channel.id,
+                  name: channel.name,
+                  icon: iconMap[channel.type],
+                }))
+              },
+              {
+                label: "Video Channels",
+                type: "channel",
+                data: videoChannels?.map((channel) => ({
+                  id: channel.id,
+                  name: channel.name,
+                  icon: iconMap[channel.type],
+                }))
+              },
+              {
+                label: "Members",
+                type: "member",
+                data: members?.map((member) => ({
+                  id: member.id,
+                  name: member.profile.name,
+                  icon: roleIconMap[member.role],
                 }))
               },
             ]}
