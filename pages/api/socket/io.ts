@@ -17,7 +17,6 @@ const ioHandler = (req: NextApiRequest, res: NextApiResponseServerIo) => {
     const io = new ServerIO(httpServer, {
       path: path,
       // @ts-ignore
-      transports: ['polling'],
       addTrailingSlash: false,
     });
     res.socket.server.io = io;

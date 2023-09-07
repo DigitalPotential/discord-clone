@@ -1,22 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    domains: ["uploadthing.com", "img.clerk.com"],
-  },
-};
-
-module.exports = {
-  ...nextConfig,
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.externals.push({
-        bufferutil: "bufferutil",
-        "utf-8-validate": "utf-8-validate",
-        "supports-color": "supports-color",
-      });
-    }
+  webpack: (config) => {
+    config.externals.push({
+      "utf-8-validate": "commonjs utf-8-validate",
+      bufferutil: "commonjs bufferutil"
+    });
 
     return config;
   },
-};
+  images: {
+    domains: [
+      "uploadthing.com"
+    ]
+  }
+}
+
+module.exports = nextConfig
