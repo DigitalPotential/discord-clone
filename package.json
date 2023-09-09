@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --loglevel warn --write \"./**/*.{jsx,js,ts,tsx,css,html}\""
   },
   "dependencies": {
     "@clerk/nextjs": "^4.23.3",
@@ -66,6 +67,7 @@
   "devDependencies": {
     "@types/uuid": "^9.0.3",
     "bufferutil": "^4.0.7",
+    "prettier": "3.0.3",
     "prisma": "^5.2.0",
     "supports-color": "^8.1.1",
     "utf-8-validate": "^5.0.10"

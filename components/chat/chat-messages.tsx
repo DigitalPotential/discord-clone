@@ -43,7 +43,7 @@ export const ChatMessages = ({
 }: ChatMessagesProps) => {
   const queryKey = `chat:${chatId}`;
   const addKey = `chat:${chatId}:messages`;
-  const updateKey = `chat:${chatId}:messages:update`
+  const updateKey = `chat:${chatId}:messages:update`;
 
   const chatRef = useRef<ElementRef<"div">>(null);
   const bottomRef = useRef<ElementRef<"div">>(null);
@@ -55,14 +55,14 @@ export const ChatMessages = ({
       paramKey,
       paramValue,
     });
-    useChatSocket({ queryKey, addKey, updateKey });
-    useChatScroll({
-      chatRef,
-      bottomRef,
-      loadMore: fetchNextPage,
-      shouldLoadMore: !isFetchingNextPage && !!hasNextPage,
-      count: data?.pages?.[0]?.items?.length ?? 0,
-    })
+  useChatSocket({ queryKey, addKey, updateKey });
+  useChatScroll({
+    chatRef,
+    bottomRef,
+    loadMore: fetchNextPage,
+    shouldLoadMore: !isFetchingNextPage && !!hasNextPage,
+    count: data?.pages?.[0]?.items?.length ?? 0,
+  });
 
   if (status === "loading") {
     return (
@@ -88,12 +88,7 @@ export const ChatMessages = ({
   return (
     <div ref={chatRef} className="flex-1 flex flex-col py-4 overflow-y-auto">
       {!hasNextPage && <div className="flex-1" />}
-      {!hasNextPage && (
-        <ChatWelcome
-          type={type}
-          name={name}
-        />
-      )}
+      {!hasNextPage && <ChatWelcome type={type} name={name} />}
       {hasNextPage && (
         <div className="flex justify-center">
           {isFetchingNextPage ? (
